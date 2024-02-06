@@ -1,0 +1,66 @@
+Loading required package: rjags
+Loading required package: coda
+Linked to JAGS 4.3.2
+Loaded modules: basemod,bugs
+
+Attaching package: ‘R2jags’
+
+The following object is masked from ‘package:coda’:
+
+    traceplot
+
+[[1]]
+[[1]]$value
+function (true, comp) 
+{
+    sqrt(sum((comp[upper.tri(comp)] - true[upper.tri(true)])^2)/15)
+}
+
+[[1]]$visible
+[1] FALSE
+
+
+[[2]]
+[[2]]$value
+[1] "\n  model{\n    # Priors\n    \n    pPsi2 ~ dwish(diagJ, J+1)\n    \n    for (j in 1:J){\n      mu[j] ~ dnorm(.05, pow(.1, -2))\n      nu[j] ~ dnorm(.8, pow(.3, -2))\n      pDel2[j] ~ dgamma(.5,.5*(.02^2))\n      del2[j] = 1/pDel2[j]\n      for (k in 1:2){\n        lambda[j,k] ~ dnorm(0, pow(.03, -2)) T(, 0)\n      }\n      pTau2[j] ~ dgamma(.5, .5)\n    }\n    \n    \n    for (i in 1:I){\n      alpha[i,1:J] ~ dmnorm(nu, pPsi2)\n      theta[i,1:J] ~ dmnorm.vcov(mu, Sig2);\n    }\n    \n    # Transform\n    \n    for (jx in 1:J) {\n      for (jy in 1:J){\n        diag_Del2[jx, jy] = (1 - step(abs(jx - jy) - 0.5))*del2[jx];\n      }\n    }\n    cross_product_lambda = lambda%*%t(lambda)\n    Sig2 = cross_product_lambda + diag_Del2\n    \n    # Likelihood\n    \n    for (n in 1:N){\n      center[n] = alpha[sub[n],task[n]]+(cond[n]-1.5)*theta[sub[n],task[n]]\n      y[n] ~ dnorm(center[n], pTau2[task[n]])\n    }\n  }\n"
+
+[[2]]$visible
+[1] FALSE
+
+
+[1] 1
+[1] 3
+[1] 2
+[1] 4
+[1] 5
+[1] 6
+[1] 7
+[1] 9
+[1] 8
+[1] 10
+[1] 11
+[1] 12
+[1] 13
+[1] 14
+[1] 16
+[1] 15
+[1] 17
+[1] 18
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
+module glm loaded
