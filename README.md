@@ -35,6 +35,7 @@ To cite the work related to this repository, please use the following citation:
   doi={10.31234/osf.io/sfce5},
   url={https://osf.io/preprints/psyarxiv/sfce5}
 }
+```
 
 ## Preprint
 
