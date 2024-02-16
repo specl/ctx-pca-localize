@@ -19,7 +19,7 @@ This repository contains all the necessary data and scripts for the analysis of 
 
 - `/_sims`: Contains the simulation scripts.
 
-To obtain the raw jags model outputs from simulation runs or coverage runs, you can use bigRun.R and coverageRun.R, respectively. These scripts will generate raw model outputs in the _data/_sim-runs and _data/_coverage-runs directories. Please note that the parallel processing cores are preset to 18. To modify this setting, adjust the num_cores parameter accordingly.
+To obtain the raw jags model outputs from simulation runs or coverage runs, you can use `bigRun.R` and `coverageRun.R`, respectively. These scripts will generate raw model outputs in the `_data/_sim-runs` and `_data/_coverage-runs` directories. Please note that the parallel processing cores are preset to 18. To modify this setting, adjust the num_cores parameter accordingly.
 
 ## Citation
 
