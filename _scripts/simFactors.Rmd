@@ -1,0 +1,93 @@
+
+
+
+```{r}
+J = 6
+t.b = list()
+
+# Constant One Factor
+
+t.b[[1]] = matrix(c(rep(0.008, J), rep(0, J)),J,2) # Low
+t.b[[2]] = matrix(c(rep(0.0137, J), rep(0, J)),J,2) # Mid
+t.b[[3]] = matrix(c(rep(0.0193, J), rep(0, J)),J,2) # High
+
+# Graded 
+
+t.b[[4]] = matrix(c(rep(0.008, J/3), rep(0.010, J/3), rep(0.0137, J/3)
+                  , rep(0, J)),J,2) # Low
+t.b[[5]] = matrix(c(rep(0.008, J/3), rep(0.0137, J/3), rep(0.0193, J/3)
+                    , rep(0, J)),J,2) # Mid
+t.b[[6]] = matrix(c(rep(0.0137, J/3), rep(0.0165, J/3), rep(0.0193, J/3)
+                    , rep(0, J)),J,2) # High
+
+
+# Constant Two Factor
+
+
+t.b1 = c(rep(0.008, J/2), rep(0, J/2))
+t.b2 = c(rep(0, J/2), rep(0.008, J/2))
+t.b[[7]] = cbind(t.b1, t.b2) # Low
+t.b1 = c(rep(0.0137, J/2), rep(0, J/2))
+t.b2 = c(rep(0, J/2), rep(0.0137, J/2))
+t.b[[8]] = cbind(t.b1, t.b2) # Mid
+t.b1 = c(rep(.0193, J/2), rep(0, J/2))
+t.b2 = c(rep(0, J/2), rep(.0193, J/2))
+t.b[[9]] = cbind(t.b1, t.b2) # High
+
+
+# Graded Two Factor
+
+t.b1 = seq(.002, .014, length.out = J)
+t.b2 = rev(seq(.002, .014, length.out = J))
+t.b[[10]] = cbind(t.b1, t.b2) # Low
+t.b1 = seq(.002, .0175, length.out = J)
+t.b2 = rev(seq(.002, .0175, length.out = J))
+t.b[[11]] = cbind(t.b1, t.b2) # Mid
+t.b1 = seq(.0045, .0175, length.out = J)
+t.b2 = rev(seq(.0045, .0175, length.out = J))
+t.b[[12]] = cbind(t.b1, t.b2) # High
+
+
+# Bi-factor
+
+t.b1 = rep(.007, J)
+t.b2 = c(rep(.011, J/2), rep(0, J/2))
+t.b3 = c(rep(0, J/2), rep(0.011, J/2))
+t.b[[13]] = cbind(t.b1, t.b2, t.b3)
+
+t.b1 = rep(.007, 6)
+t.b2 = c(rep(.011, J/3), rep(0, J*2/3))
+t.b3 = c(rep(0, J/3), rep(.011, J/3), rep(0, J/3))
+t.b4 = c(rep(0, J*2/3), rep(0.011, J/3))
+t.b[[14]] = cbind(t.b1, t.b2, t.b3, t.b4)
+
+saveRDS(t.b, "../_data/_ground-truths/factors.RDS")
+```
+
+
+```{r}
+makeTheta = function(I, J, t.b, t.c = 0.025, t.nu = 0.08){
+  Nu = rep(t.nu, J)
+  t.lamb = t.b
+  t.b = apply(t.b, 1, sum)
+  t.a = sqrt(t.c^2-t.b^2)
+  t.delta = diag(t.a^2)
+  Cov = crossprod(t(t.lamb))+t.delta
+  t.cor = cov2cor(Cov)
+  theta = rmvnorm(I, Nu, Cov)
+  return(list(Nu = Nu, P = t.cor, delta = t.delta, Cov = Cov, val = theta))
+}
+t.cor = list()
+t.cov = list()
+I = 200
+for (i in 1:length(t.b)){
+  theta = makeTheta(I = I, J = J, t.b = t.b[[i]])
+  t.cor[[i]] = cov2cor(theta$Cov)
+  t.cov[[i]] = theta$Cov
+}
+
+saveRDS(t.cor, "../_data/_ground-truths/correlations.RDS")
+saveRDS(t.cov, "../_data/_ground-truths/covariances.RDS")
+```
+
+
