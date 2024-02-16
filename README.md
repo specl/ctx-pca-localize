@@ -5,10 +5,8 @@ This repository contains all the necessary data and scripts for the analysis of 
 ## Repository Structure
 
 - `/_data`
-  - `/_sim-runs`: Contains raw outputs from simulation runs in large zipped files.
   - `/_sim-results`: Includes the summary performance metrics from the simulations.
   - `/_ground-truth`: Stores correlation, covariance, and factor structure for each ground truth used for simulation.
-  - `/_coverage-runs`: Holds the raw model output for the coverage simulations.
   - `/_coverage-results`: Contains the summary of coverage performance.
 
 - `/_logistics`: Features the functions and models used for the simulations.
@@ -20,6 +18,8 @@ This repository contains all the necessary data and scripts for the analysis of 
 - `/_scripts`: Includes data wrangling and cleaning scripts.
 
 - `/_sims`: Contains the simulation scripts.
+
+To obtain the raw jags data from simulation runs or coverage runs, you can use bigRun.R and coverageRun.R, respectively. These scripts will generate raw model outputs in the _data/_sim-runs and _data/_coverage-runs directories. Please note that the parallel processing cores are preset to 18. To modify this setting, adjust the num_cores parameter accordingly.
 
 ## Citation
 
