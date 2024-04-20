@@ -5,17 +5,17 @@ This repository contains all the necessary data and scripts for the analysis of 
 ## Repository Structure
 
 - `/_data`
-  - `/_sim-results`: Includes the summary performance metrics from the simulations.
-  - `/_ground-truth`: Stores correlation, covariance, and factor structure for each ground truth used for simulation.
+  - `/_sim-results`: Contains the summary performance metrics from the simulations.
+  - `/_ground-truth`: Contains correlation, covariance, and factor structure for each ground truth used for simulation.
   - `/_coverage-results`: Contains the summary of coverage performance.
 
-- `/_logistics`: Features the functions and models used for the simulations.
+- `/_logistics`: Contains the functions and models used for the simulations.
 
 - `/_make-figs`: Contains scripts used to generate plots.
 
-- `/_manuscript`: Stores manuscript-relevant materials.
+- `/_manuscript`: Contains manuscript-relevant materials.
 
-- `/_scripts`: Includes data wrangling and cleaning scripts.
+- `/_scripts`: Contains data wrangling and cleaning scripts.
 
 - `/_sims`: Contains the simulation scripts.
 
