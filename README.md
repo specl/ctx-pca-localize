@@ -1,6 +1,6 @@
 # ctx-pca-localize
 
-This repository contains all the necessary data and scripts for the analysis of simulation runs described in the paper "Estimating Correlations in Low-Reliability Settings With Constrained Hierarchical Models" by Mehrvarz & Rouder (2024).
+This repository contains all the necessary data and scripts for the analysis of simulation runs described in the paper "Estimating Correlations in Low-Reliability Settings With Constrained Hierarchical Models" by Mehrvarz & Rouder (2025). This paper has been accepted for publication in *Behavior Research Methods*.
 
 ## Repository Structure
 
@@ -26,16 +26,16 @@ To obtain the raw jags model outputs from simulation runs or coverage runs, you 
 To cite the work related to this repository, please use the following citation:
 
 ```bibtex
-@article{MehrvarzRouder2024,
-  title={Estimating Correlations in Low-Reliability Settings With Constrained Hierarchical Models},
-  author={Mehrvarz, M. and Rouder, J. N.},
-  year={2024},
-  month={Feb},
-  day={7},
-  doi={10.31234/osf.io/sfce5},
-  url={https://osf.io/preprints/psyarxiv/sfce5}
-}
-```
+@article{mehrvarz2025estimating,
+  title={Estimating correlations in low-reliability settings with constrained hierarchical models},
+  author={Mehrvarz, Mahbod and Rouder, Jeffrey N},
+  journal={Behavior Research Methods},
+  volume={57},
+  number={2},
+  pages={59},
+  year={2025},
+  publisher={Springer}
+}```
 
 ## Preprint
 
