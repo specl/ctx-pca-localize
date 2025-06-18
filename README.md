@@ -37,6 +37,3 @@ To cite the work related to this repository, please use the following citation:
   publisher={Springer}
 }```
 
-## Preprint
-
-The preprint of the paper can be found [here](https://osf.io/preprints/psyarxiv/sfce5).
